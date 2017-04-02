@@ -1,7 +1,9 @@
-<?php 
+<?php
+if(!isset($_SESSION)){
 session_start();
+};
 $dbhost = 'localhost';
-$db = 'test';
+$db = 'data';
 $name = 'root';
 $pass = '';
 
@@ -14,7 +16,7 @@ echo $e->getMessage();
 include_once'class/class.user.php';
 include_once'class/class.post.php';
 include_once'class/class.cart.php';
-include_once'template.php';
+include_once'templates/template.php';
 
 $user = new User($dbconn);
 $post = new Post($dbconn);
@@ -30,4 +32,3 @@ $cart->delete();
 }
 
 ?>
-

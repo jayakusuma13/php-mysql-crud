@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class User{
 private $db;
@@ -8,9 +8,7 @@ $this->db = $dbconn;
 }
 
 public function register($name,$pass){
-$stmt = $this->db->prepare("insert into users (username,password) values ($name,$pass)");
-$stmt->bindparam(":name",$name);
-$stmt->bindparam(":pass",$pass);
+$stmt = $this->db->prepare("insert into users (username,password) values ('$name','$pass')");
 $stmt->execute();
 return $stmt;
 }
@@ -36,7 +34,7 @@ return True;
 }
 
 public function logout(){
-session_destroy();
+//session_destroy();
 unset($_SESSION['activeuser']);
 return True;
 }

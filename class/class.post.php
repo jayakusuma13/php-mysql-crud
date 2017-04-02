@@ -1,5 +1,5 @@
 <?php
-include_once'config.php';
+include($_SERVER['DOCUMENT_ROOT']."/app/example/config.php");
 
 class Post{
 
@@ -39,21 +39,13 @@ return $stmt;
 }
 
 public function AddPost($title,$text,$author,$image){
-$stmt = $this->db->prepare("INSERT INTO posts (title,text,user,image) VALUES (:title,:text,:author,:image)");
-$stmt->bindparam(":title",$title);
-$stmt->bindparam(":text",$text);
-$stmt->bindparam(":author",$author);
-$stmt->bindparam(":image",$image);
+$stmt = $this->db->prepare("INSERT INTO posts (title,text,user,image) VALUES ('$title','$text','$author','$image')");
 $stmt->execute();
 return $stmt;
 }
 
 public function EditPost($id,$title,$text,$image){
-$stmt = $this->db->prepare("UPDATE posts SET title=:title,text=:text,image=:image WHERE id=:id");
-$stmt->bindparam(":title",$title);
-$stmt->bindparam(":text",$text);
-$stmt->bindparam(":id",$id);
-$stmt->bindparam(":image",$image);
+$stmt = $this->db->prepare("UPDATE posts SET title='$title',text='$text',image='$image' WHERE id='$id'");
 $stmt->execute();
 return $stmt;
 }

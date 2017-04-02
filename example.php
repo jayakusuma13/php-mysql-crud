@@ -12,6 +12,4 @@ $templates->addData(['company' => 'EvilCorp'], 'layout');
 
 //echo $templates->render('profile', ['name' => 'Franku']);
 
-echo $templates->render('users');
-
-?>
+echo $templates->render('home');
