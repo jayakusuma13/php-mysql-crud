@@ -1,7 +1,5 @@
 <?php
-if(!isset($_SESSION)){
 session_start();
-};
 $dbhost = 'localhost';
 $db = 'data';
 $name = 'root';
@@ -16,11 +14,13 @@ echo $e->getMessage();
 include_once'class/class.user.php';
 include_once'class/class.post.php';
 include_once'class/class.cart.php';
-include_once'templates/template.php';
+include_once'class/class.invoice.php';
+include_once'template.php';
 
 $user = new User($dbconn);
 $post = new Post($dbconn);
 $cart = new Cart($dbconn);
+$invoice = new Invoice($dbconn);
 $template = new Template($dbconn);
 
 if(isset($_POST['logout'])){
